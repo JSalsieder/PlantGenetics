@@ -1,8 +1,8 @@
 
-int soilProfile;
+int soilProfile =-1;
 
 void setup(){
-  //noLoop();
+ 
   fullScreen();  //make the UI fullscreen
   background(BLACK); //make the background black
   frameRate(30); //cap the frame rate to 30 frames per second

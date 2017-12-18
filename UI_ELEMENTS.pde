@@ -1,8 +1,11 @@
 class Button{
-  Thread function;
-  String text; 
-  rect bounds;
-  PFont font;
+  private Thread function;
+  private String text; 
+  private rect bounds;
+  private PFont font;
+  private int bgColor,borderColor,fontColor;
+  private int ID;
+  
   
   /**
   * Full Constructor
@@ -12,14 +15,20 @@ class Button{
     this.font = font;
     this.bounds = bounds;
     this.function = function;
+    this.bgColor = BLACK;
+    this.borderColor = WHITE;
+    this.fontColor = WHITE;
   }
   
   /**
   * Simple constructor
   */
   Button(String text){
-   this.text = text;
-   this.bounds = new rect(0, 0, 10, 10);
+    this.text = text;
+    bounds =  new rect(0, 0, 10, 10);
+    this.bgColor = BLACK;
+    this.borderColor = WHITE;
+    this.fontColor = WHITE;
   }
   
   
@@ -37,6 +46,14 @@ class Button{
   */
   void setFont(PFont font){
     this.font = font;
+  }
+  
+  void setID(int id){
+    ID = id;
+  }
+   
+  int getID(){
+    return ID;
   }
   
   
@@ -67,12 +84,27 @@ class Button{
     function.run();
   }
       
+      
+  void setStandardColors(){ 
+    bgColor = BLACK;
+    borderColor = WHITE;
+    fontColor = WHITE;
+    this.update();
+  }
+  
+  void setInvertedColors(){
+    bgColor = WHITE;
+    borderColor = BLACK;
+    fontColor = BLACK;
+    this.update();
+  }
+  
   
   void update(){
-    fill(BLACK);
-    stroke(WHITE);
+    fill(bgColor);
+    stroke(borderColor);
     rect(bounds.xpos, bounds.ypos, bounds.rwidth, bounds.rheight);
-    fill(WHITE);
+    fill(fontColor);
     textAlign(CENTER, CENTER);
     textFont(font);
     text(text, bounds.xpos+2, bounds.ypos+2, bounds.rwidth-4, bounds.rheight-4);

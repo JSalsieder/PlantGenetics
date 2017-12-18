@@ -1,6 +1,7 @@
 class linkedList<E>{
-  node head;
-  node tail;
+  private node head;
+  private node tail;
+  private int size;
   
   linkedList(node head){
     this.head = head;
@@ -14,6 +15,23 @@ class linkedList<E>{
    tail = element;
    tail.previous = lastTail;
    lastTail.next = tail;
+  }
+  
+  Object get(int index) throws IllegalArgumentException{
+    if(index >= size || index < 0){
+     throw new IllegalArgumentException("Array index out of bounds"); 
+    }
+    return getrec(index, head); 
+  }
+  
+  private Object getrec(int left, node Current){
+      
+      if(left != 0){
+        left--;
+        getrec(left, Current.next);
+      }
+      return Current.next; 
+
   }
   
   

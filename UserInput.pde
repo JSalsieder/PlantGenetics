@@ -1,4 +1,4 @@
-
+int clicks = 0;
 /**
 *  handler for keyboard input
 */
@@ -14,6 +14,7 @@ void keyPressed(){
 *  causes buttons to be pressed
 */
 void mousePressed(){
+    System.out.println( ++clicks);
     for(Button b: Mainbuttons){
       if(b == null){continue;}
       if (b.isWithinBounds(mouseX, mouseY)){
@@ -24,11 +25,13 @@ void mousePressed(){
       if(b == null){continue;}
       if (b.isWithinBounds(mouseX, mouseY)){
         b.preformAction();
+        b.setInvertedColors();
       }
     }
     for(Button b: profileButtons){
       if(b == null){continue;}
       if (b.isWithinBounds(mouseX, mouseY)){
+        b.setInvertedColors();
         b.preformAction();
       }
     }

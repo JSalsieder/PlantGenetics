@@ -1,6 +1,6 @@
-Button Settingbuttons[] = new Button[10];
-Button Mainbuttons[] = new Button[10];
-Button profileButtons[] = new Button[3];
+Button Settingbuttons[] = {new Button("Soil Profile"), new Button("Save & Quit")};
+Button Mainbuttons[] = {new Button("Settings")};
+Button profileButtons[] = {new Button("Profile 1"), new Button("Profile 2"), new Button("Profile 3")};
 enum buttonSelected {SOIL_PROFILE, SAVE, CANCEL};
 boolean settingsOpen = true;
 boolean SoilProfileOpen = false;
@@ -32,7 +32,7 @@ void draw() {
   
   //main display buttons
   
-  Mainbuttons[0] = new Button("Settings");
+  
   Mainbuttons[0].setBounds(new rect(width-110, 10, 100, 50));
   Mainbuttons[0].setFont(font_medium);
   Mainbuttons[0].setFunction( new Thread(new Runnable(){
@@ -68,7 +68,7 @@ void draw() {
     
     
     //----------MENU BUTTONS SETUP--------------------------
-    Settingbuttons[0] = new Button("Soil Profile");
+    
     Settingbuttons[0].setBounds(new rect(width/2 - SETTINGS_WIDOOW_WIDTH/2 +5, height/2-SETTINGS_WINDOW_HEIGHT/2 + 35, 90, 50));
     Settingbuttons[0].setFunction(new Thread( new Runnable(){
         public void run(){
@@ -76,7 +76,7 @@ void draw() {
         }
     } ));
     
-    Settingbuttons[1] = new Button("Save & Exit");
+    
     Settingbuttons[1].setBounds(new rect(width/2 - SETTINGS_WIDOOW_WIDTH/2 +5, height/2+SETTINGS_WINDOW_HEIGHT/2 - 60, 90, 50));
     Settingbuttons[1].setFunction(new Thread( new Runnable(){
         public void run(){
@@ -93,24 +93,25 @@ void draw() {
         if(display != null){
           image(display, viewPane.xpos+10, viewPane.ypos+10, viewPane.rwidth-20, viewPane.rheight-100);
         }
-        profileButtons[0] = new Button("Profile 1",
-                  new rect(viewPane.BOTTOM_LEFT().x +10,
-                  viewPane.BOTTOM_LEFT().y-60, 90,50), font_medium,
-                  new Thread(new Runnable(){
+
+        profileButtons[0].setBounds(new rect(viewPane.BOTTOM_LEFT().x +10, viewPane.BOTTOM_LEFT().y-60, 90, 50));
+        profileButtons[0].setFont(font_medium);
+        profileButtons[0].setFunction(new Thread(new Runnable(){
                   public void run(){
                     display = soilProfile1;
                   }
                 }));
-        profileButtons[1] = new Button("Profile 2",
-                  new rect(viewPane.xpos + viewPane.rwidth/2-45, viewPane.BOTTOM_LEFT().y-60, 90,50), font_medium,
-                  new Thread(new Runnable(){
+                
+        profileButtons[1].setBounds(new rect(viewPane.xpos + viewPane.rwidth/2-45, viewPane.BOTTOM_LEFT().y-60, 90,50));
+        profileButtons[1].setFont(font_medium);
+        profileButtons[1].setFunction(new Thread(new Runnable(){
                   public void run(){
                     display = soilProfile2;
                   }
                 }));
-       profileButtons[2] = new Button("Profile 3",
-                  new rect(viewPane.BOTTOM_RIGHT().x -100, viewPane.BOTTOM_LEFT().y-60, 90,50), font_medium,
-                  new Thread(new Runnable(){
+       profileButtons[2].setBounds(new rect(viewPane.BOTTOM_RIGHT().x -100, viewPane.BOTTOM_LEFT().y-60, 90,50));
+       profileButtons[2].setFont(font_medium);
+       profileButtons[2].setFunction(new Thread(new Runnable(){
                   public void run(){
                     display = soilProfile3;
                   }
