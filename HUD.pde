@@ -11,6 +11,10 @@ int selectedButton= -1;
 
 void draw() {
   
+  profileButtons[0].setID(1);
+  profileButtons[1].setID(2);
+  profileButtons[2].setID(3);
+  
   PFont font_small, font_medium, font_large;
   soilProfile1 = loadImage("Profile1.PNG");
   soilProfile2 = loadImage("Profile2.PNG");

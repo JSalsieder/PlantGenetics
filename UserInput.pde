@@ -32,7 +32,10 @@ void mousePressed(){
       if(b == null){continue;}
       if (b.isWithinBounds(mouseX, mouseY)){
         b.setInvertedColors();
+        soilProfile = b.getID();
         b.preformAction();
+      }else{
+        b.setStandardColors(); 
       }
     }
 }
